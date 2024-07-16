@@ -240,3 +240,15 @@ const pets = [
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
   ];
+
+
+
+let domBS = document.querySelector(".bootstrap");
+let domString = domBS;
+let domString.innerHTML = ""
+
+for (let i = 0; i < pets.length; i++) {
+  if (pets[i].id === 30) {
+    console.log("working")
+  }
+} 
