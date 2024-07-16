@@ -1,11 +1,19 @@
 body {
-    background-color: grey;
+    background-image: url("cat-bg.jpg");
 }
 
 .petImage {
-    width: 40%;
+    width: 60%;
 }
 
 .card {
     max-width: 300px;
+}
+
+.bootstrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin: 40px
 }
