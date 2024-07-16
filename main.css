@@ -10,10 +10,38 @@ body {
     max-width: 300px;
 }
 
+.btn-wrapper {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+}
+
+button {
+    padding: 10px 60px;
+    border: none;
+    color: #FEFBEA;
+    border-radius: 10%;
+    box-shadow: 0 0 4px black;
+    text-shadow: 0 0 7px black;
+}
+
+#cats {
+    background-color: #F2C6DE;
+}
+
+#dogs {
+    background-color: #C6DEF1;
+}
+
+#dinos {
+    background-color: #C9E4DE;
+}
+
 .bootstrap {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 5px;
-    margin: 40px
+    margin: 5% 40px;
 }
