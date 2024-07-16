@@ -246,7 +246,7 @@ const pets = [
 let domBS = document.querySelector(".bootstrap");
 
 for (let i = 0; i < pets.length; i++) {
-  if (pets[i].id === 29) {
+
     domBS.innerHTML += `<div class="card text-center">
     <div class="card-header">
       <h2>
@@ -262,5 +262,5 @@ for (let i = 0; i < pets.length; i++) {
       ${pets[i].type}
     </div>
   </div>`
-  }
+  
 } 
