@@ -244,11 +244,23 @@ const pets = [
 
 
 let domBS = document.querySelector(".bootstrap");
-let domString = domBS;
-let domString.innerHTML = ""
 
 for (let i = 0; i < pets.length; i++) {
-  if (pets[i].id === 30) {
-    console.log("working")
-  }
+
+    domBS.innerHTML += `<div class="card text-center">
+    <div class="card-header">
+      <h2>
+      ${pets[i].name}
+      </h2>
+    </div>
+    <div class="card-body">
+      <img src="${pets[i].imageUrl}" alt="no image found" class="petImage">
+      <h5 class="card-text">${pets[i].color}</h5>
+      <p>${pets[i].specialSkill}</p>
+    </div>
+    <div class="card-footer text-body-secondary">
+      ${pets[i].type}
+    </div>
+  </div>`
+  
 } 
