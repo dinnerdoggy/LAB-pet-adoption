@@ -243,24 +243,53 @@ const pets = [
 
 
 
-let domBS = document.querySelector(".bootstrap");
+const domBS = document.querySelector(".bootstrap");
 
-for (let i = 0; i < pets.length; i++) {
 
-    domBS.innerHTML += `<div class="card text-center">
-    <div class="card-header">
-      <h2>
-      ${pets[i].name}
-      </h2>
-    </div>
-    <div class="card-body">
-      <img src="${pets[i].imageUrl}" alt="no image found" class="petImage">
-      <h5 class="card-text">${pets[i].color}</h5>
-      <p>${pets[i].specialSkill}</p>
-    </div>
-    <div class="card-footer text-body-secondary">
-      ${pets[i].type}
-    </div>
-  </div>`
-  
-} 
+function renderDom(petType) {
+  for (let i = 0; i < pets.length; i++) {
+    if (pets[i].type === petType || petType === "all") {
+      domBS.innerHTML += `<div class="card text-center">
+      <div class="card-header">
+        <h2>
+        ${pets[i].name}
+        </h2>
+      </div>
+      <div class="card-body">
+        <img src="${pets[i].imageUrl}" alt="no image found" class="petImage">
+        <h5 class="card-text">${pets[i].color}</h5>
+        <p>${pets[i].specialSkill}</p>
+      </div>
+      <div class="card-footer text-body-secondary">
+        ${pets[i].type}
+      </div>
+    </div>`
+    } 
+  }  
+}
+
+const catBtn = document.querySelector("#cats");
+const dogBtn = document.querySelector("#dogs");
+const dinoBtn = document.querySelector("#dinos");
+const allBtn = document.querySelector("#all");
+
+catBtn.addEventListener("click", () => {
+  domBS.innerHTML = ""
+  renderDom("cat");
+});
+
+dogBtn.addEventListener("click", () => {
+  domBS.innerHTML = ""
+  renderDom("dog");
+});
+
+dinoBtn.addEventListener("click", () => {
+  domBS.innerHTML = ""
+  renderDom("dino");
+});
+
+allBtn.addEventListener("click", () => {
+  domBS.innerHTML = ""
+  renderDom("all");
+});
+
