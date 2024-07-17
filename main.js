@@ -245,6 +245,13 @@ const pets = [
 
 const domBS = document.querySelector(".bootstrap");
 
+const catBtn = document.querySelector("#cats");
+const dogBtn = document.querySelector("#dogs");
+const dinoBtn = document.querySelector("#dinos");
+const allBtn = document.querySelector("#all");
+
+
+renderDom("all");
 
 function renderDom(petType) {
   for (let i = 0; i < pets.length; i++) {
@@ -267,11 +274,6 @@ function renderDom(petType) {
     } 
   }  
 }
-
-const catBtn = document.querySelector("#cats");
-const dogBtn = document.querySelector("#dogs");
-const dinoBtn = document.querySelector("#dinos");
-const allBtn = document.querySelector("#all");
 
 catBtn.addEventListener("click", () => {
   domBS.innerHTML = ""
