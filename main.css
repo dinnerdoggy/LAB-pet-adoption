@@ -16,6 +16,9 @@ body {
 
 form {
     padding: 20px;
+}
+
+.form-label { 
     color: aqua;
     text-shadow: 0 0 4px black;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

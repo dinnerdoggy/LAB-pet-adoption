@@ -242,17 +242,19 @@ const pets = [
   ];
 
 
-
+// Connection to dom for location in which we render the pet cards
 const domBS = document.querySelector(".bootstrap");
 
+//filter button connections
 const catBtn = document.querySelector("#cats");
 const dogBtn = document.querySelector("#dogs");
 const dinoBtn = document.querySelector("#dinos");
 const allBtn = document.querySelector("#all");
 
-
+//Rendering all cards upon page loading
 renderDom("all");
 
+// This renders the pet array cards to the dom
 function renderDom(petType) {
   for (let i = 0; i < pets.length; i++) {
     if (pets[i].type === petType || petType === "all") {
@@ -275,6 +277,7 @@ function renderDom(petType) {
   }  
 }
 
+//filter button functions
 catBtn.addEventListener("click", () => {
   domBS.innerHTML = ""
   renderDom("cat");
@@ -295,3 +298,26 @@ allBtn.addEventListener("click", () => {
   renderDom("all");
 });
 
+//user input form for card creation vvvvvvvvvvvv
+// *********************************************
+
+// Connection to the form in the dom
+let form = document.querySelector("form");
+
+const createPet = (e) => {
+  e.preventDefault();
+  const newPetObj = {
+    // Creating the new pet object
+    id: pets.length + 1,
+    name: document.querySelector("#petName").value,
+    color: document.querySelector("#color").value,
+    specialSkill: document.querySelector("#skill").value,
+    type: document.querySelector("#type").value,
+    imageUrl: document.querySelector("#image").value,
+  };
+  pets.push(newPetObj); // pushing the new pet card to the array
+  renderDom(pets); // repainting the dom with new pet added
+  form.reset(); // Resetting the pet creation form
+};
+
+form.addEventListener("submit", createPet);
