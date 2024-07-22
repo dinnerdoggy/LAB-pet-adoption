@@ -243,61 +243,90 @@ const pets = [
 
 
 
-renderDom("all");
+  
+  
+  // Connections to the section where the cards are rendered
+  const domBS = document.querySelector(".bootstrap");
+  
+  //button html connections
+  const catBtn = document.querySelector("#cats");
+  const dogBtn = document.querySelector("#dogs");
+  const dinoBtn = document.querySelector("#dinos");
+  const allBtn = document.querySelector("#all");
 
-
-// Connections to the section where the cards are rendered
-const domBS = document.querySelector(".bootstrap");
-
-//button html connections
-const catBtn = document.querySelector("#cats");
-const dogBtn = document.querySelector("#dogs");
-const dinoBtn = document.querySelector("#dinos");
-const allBtn = document.querySelector("#all");
-
-
-// Button click functions
-catBtn.addEventListener("click", () => {
-  domBS.innerHTML = ""
-  renderDom("cat");
-});
-
-dogBtn.addEventListener("click", () => {
-  domBS.innerHTML = ""
-  renderDom("dog");
-});
-
-dinoBtn.addEventListener("click", () => {
-  domBS.innerHTML = ""
-  renderDom("dino");
-});
-
-allBtn.addEventListener("click", () => {
-  domBS.innerHTML = ""
+  
+  // Filter button click functions
+  catBtn.addEventListener("click", () => {
+    domBS.innerHTML = ""
+    renderDom("cat");
+  });
+  
+  dogBtn.addEventListener("click", () => {
+    domBS.innerHTML = ""
+    renderDom("dog");
+  });
+  
+  dinoBtn.addEventListener("click", () => {
+    domBS.innerHTML = ""
+    renderDom("dino");
+  });
+  
+  allBtn.addEventListener("click", () => {
+    domBS.innerHTML = ""
+    renderDom("all");
+  });
+  
+  
+  // Calling the function to render the pets array to dom
   renderDom("all");
-});
-
+  
 // Defining function to render the array
 function renderDom(petType) {
   for (let i = 0; i < pets.length; i++) {
     if (pets[i].type === petType || petType === "all") {
       domBS.innerHTML += `<div class="card text-center">
       <div class="card-header">
-        <h2>
-        ${pets[i].name}
-        </h2>
+      <h2>
+      ${pets[i].name}
+      </h2>
       </div>
       <div class="card-body">
-        <img src="${pets[i].imageUrl}" alt="no image found" class="petImage">
-        <h5 class="card-text">${pets[i].color}</h5>
-        <p>${pets[i].specialSkill}</p>
+      <img src="${pets[i].imageUrl}" alt="no image found" class="petImage">
+      <h5 class="card-text">${pets[i].color}</h5>
+      <p>${pets[i].specialSkill}</p>
       </div>
       <div class="card-footer text-body-secondary">
-        ${pets[i].type}
+      ${pets[i].type}
       </div>
-    </div>`
+      </div>`
     } 
   }  
 }
 
+
+
+// form html connection
+const form = document.querySelector('form');
+
+// Grabs values from form, and pushes new object to array
+const createPet = (e) => {
+  e.preventDefault();
+  
+  const newPetObj = {
+    id: pets.length + 1,
+    name: document.querySelector("#name").value,
+    color: document.querySelector("#color").value,
+    specialSkill: document.querySelector("#specialSkill").value,
+    type: document.querySelector("#type").value,
+    imageUrl: document.querySelector("#formImage").value
+  }
+  
+  pets.push(newPetObj);
+  domBS.innerHTML = "";
+  renderDom("all");
+  form.reset();
+}
+
+
+form.addEventListener('submit', createPet)
 
