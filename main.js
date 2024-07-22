@@ -293,7 +293,7 @@ function renderDom(petType) {
       <h5 class="card-text">${pets[i].color}</h5>
       <p>${pets[i].specialSkill}</p>
       </div>
-      <button class="btn btn-danger" id="delete--${pets.id}">Delete</button>
+      <button class="btn btn-danger" id="delete--${pets[i].id}">Delete</button>
       <div class="card-footer text-body-secondary">
       ${pets[i].type}
       </div>
