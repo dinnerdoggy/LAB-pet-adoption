@@ -18,8 +18,11 @@ form {
     padding: 20px;
     color: aqua;
     text-shadow: 0 0 4px black;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 2em;
+}
+
+.form-label {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .petImage {
@@ -64,4 +67,8 @@ button {
     justify-content: center;
     gap: 5px;
     margin: 5% 40px;
+}
+
+.image {
+    width: 100%;
 }
