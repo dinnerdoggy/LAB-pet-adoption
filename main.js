@@ -277,8 +277,6 @@ const pets = [
   });
   
   
-  // Calling the function to render the pets array to dom
-  renderDom("all");
   
 // Defining function to render the array
 function renderDom(petType) {
@@ -295,6 +293,7 @@ function renderDom(petType) {
       <h5 class="card-text">${pets[i].color}</h5>
       <p>${pets[i].specialSkill}</p>
       </div>
+      <button class="btn btn-danger" id="delete--${pets.id}">Delete</button>
       <div class="card-footer text-body-secondary">
       ${pets[i].type}
       </div>
@@ -304,6 +303,8 @@ function renderDom(petType) {
 }
 
 
+
+// ********* CREATE - crud ************* //
 
 // form html connection
 const form = document.querySelector('form');
@@ -330,3 +331,19 @@ const createPet = (e) => {
 
 form.addEventListener('submit', createPet)
 
+//*********** DELETE - crud ***************/
+const app = document.querySelector(".bootstrap");
+
+app.addEventListener("click", (e) => {
+  if (e.target.id.includes("delete")) {
+    const [, id] = e.target.id.split("--");
+    const index = pets.findIndex(e => e.id === Number(id));
+    pets.splice(index, 1);
+    domBS.innerHTML = "";
+    renderDom("all");
+  }
+});
+
+
+  // Calling the function to render the pets array to dom
+  renderDom("all");
