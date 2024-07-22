@@ -243,16 +243,41 @@ const pets = [
 
 
 
+renderDom("all");
+
+
+// Connections to the section where the cards are rendered
 const domBS = document.querySelector(".bootstrap");
 
+//button html connections
 const catBtn = document.querySelector("#cats");
 const dogBtn = document.querySelector("#dogs");
 const dinoBtn = document.querySelector("#dinos");
 const allBtn = document.querySelector("#all");
 
 
-renderDom("all");
+// Button click functions
+catBtn.addEventListener("click", () => {
+  domBS.innerHTML = ""
+  renderDom("cat");
+});
 
+dogBtn.addEventListener("click", () => {
+  domBS.innerHTML = ""
+  renderDom("dog");
+});
+
+dinoBtn.addEventListener("click", () => {
+  domBS.innerHTML = ""
+  renderDom("dino");
+});
+
+allBtn.addEventListener("click", () => {
+  domBS.innerHTML = ""
+  renderDom("all");
+});
+
+// Defining function to render the array
 function renderDom(petType) {
   for (let i = 0; i < pets.length; i++) {
     if (pets[i].type === petType || petType === "all") {
@@ -275,23 +300,4 @@ function renderDom(petType) {
   }  
 }
 
-catBtn.addEventListener("click", () => {
-  domBS.innerHTML = ""
-  renderDom("cat");
-});
-
-dogBtn.addEventListener("click", () => {
-  domBS.innerHTML = ""
-  renderDom("dog");
-});
-
-dinoBtn.addEventListener("click", () => {
-  domBS.innerHTML = ""
-  renderDom("dino");
-});
-
-allBtn.addEventListener("click", () => {
-  domBS.innerHTML = ""
-  renderDom("all");
-});
 
