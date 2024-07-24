@@ -257,8 +257,8 @@ const pets = [
   
   // Filter button click functions
   catBtn.addEventListener("click", () => {
-    domBS.innerHTML = ""
-    renderDom("cat");
+    domBS.innerHTML = "" //clears the dom before re-rendering
+    renderDom("cat"); // When the "cat" button is clicked, "cat" is the argument for petType
   });
   
   dogBtn.addEventListener("click", () => {
@@ -278,11 +278,11 @@ const pets = [
   
   
   
-// Defining function to render the array
-function renderDom(petType) {
+// Defining function to render the array, the loop grabs the key info from every object with the template strings, and injects them into the html with cards
+function renderDom(petType) {  // We're using the pet type with the render function to include filters
   for (let i = 0; i < pets.length; i++) {
-    if (pets[i].type === petType || petType === "all") {
-      domBS.innerHTML += `<div class="card text-center">
+    if (pets[i].type === petType || petType === "all") { //checks the pet type for filter buttons clicks. Only renders the petType passed as an argument, or "all"
+      domBS.innerHTML += `<div class="card text-center"> 
       <div class="card-header">
       <h2>
       ${pets[i].name}
@@ -310,40 +310,40 @@ function renderDom(petType) {
 const form = document.querySelector('form');
 
 // Grabs values from form, and pushes new object to array
-const createPet = (e) => {
-  e.preventDefault();
+const createPet = (e) => {  // the "e" event is the mouse click
+  e.preventDefault(); //stops the page from refreshing
   
-  const newPetObj = {
-    id: pets.length + 1,
-    name: document.querySelector("#name").value,
+  const newPetObj = { // Creates a new pet object using the user inputted info
+    id: pets.length + 1,  // Gitves an id that will match it's position at the end of the array
+    name: document.querySelector("#name").value, //Grabbing the elements, ".value" will be the users input
     color: document.querySelector("#color").value,
     specialSkill: document.querySelector("#specialSkill").value,
     type: document.querySelector("#type").value,
     imageUrl: document.querySelector("#formImage").value
   }
   
-  pets.push(newPetObj);
-  domBS.innerHTML = "";
+  pets.push(newPetObj); //appends newPetObj to end of array
+  domBS.innerHTML = ""; //clears dom before re-rendering
   renderDom("all");
-  form.reset();
+  form.reset(); //clears the input fields for the user
 }
 
-
+// invokes createPet() on clicking the submit button on the form
 form.addEventListener('submit', createPet)
 
 //*********** DELETE - crud ***************/
-const app = document.querySelector(".bootstrap");
 
-app.addEventListener("click", (e) => {
-  if (e.target.id.includes("delete")) {
-    const [, id] = e.target.id.split("--");
-    const index = pets.findIndex(e => e.id === Number(id));
-    pets.splice(index, 1);
+// domBS is the element in which all the rendering happens
+domBS.addEventListener("click", (e) => { // listening for a click anywhere in this zone
+  if (e.target.id.includes("delete")) { // if the target that is clicked has the "delete" id
+    const [, id] = e.target.id.split("--"); // fuzzy about the [, id] but it's targeting the "delete--id#", then grabbing it by the "--" and removing the dashes
+    const index = pets.findIndex(e => e.id === Number(id)); //turning the id string into a number and putting it in the index variable
+    pets.splice(index, 1); //at the position of "index" remove 1 item
     domBS.innerHTML = "";
     renderDom("all");
   }
 });
 
 
-  // Calling the function to render the pets array to dom
+  // Calling the function to render the pets array to dom on page load
   renderDom("all");
